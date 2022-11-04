@@ -1,0 +1,1 @@
+window.prompt("Please choose: rock, paper or scissors")
