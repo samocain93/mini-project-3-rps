@@ -14,24 +14,68 @@
 
 // console.log(x)
 
-
-
-
-
-
+var choices = ["rock", "paper", "scissors"];
 
 function playGame() {
-
+  playRound();
 }
 
-function playRound(playerSelection, computerSelection) {
-
+function playRound() {
+  let playerSelection = playerChoice();
+  let computerSelection = computerChoice();
 }
+
+
 
 function playerChoice() {
+  //   will get the input from the player
+  var input = prompt("Select: rock, paper, or scissors");
+  while(input == null) {
+    input = prompt("Please type rock, paper or scissors")
+  }
+   input = input.toLowerCase();
 
+  let check = validateInput(input);
+   while (check == false) {
+    input = prompt("Please type: rock, paper or scissors");
+    input = input.toLowerCase() 
+    check = validateInput(input);
+
+  };
+  while (input == null) {
+    input = prompt("Please type: rock, paper or scissors");
+
+  }
+  input = input.toLowerCase();
+  check = validateInput(input);
 }
+
+
 
 function computerChoice() {
-
+  return choices[Math.floor(Math.random() * choices.length)];
 }
+
+
+
+function validateInput(choice) {
+    if(choices.includes(choice)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function pickWinner(choiceP, choiceC) {
+    if(choiceP === choiceC) {
+        return "Tie"
+    }
+}
+
+
+
+
+
+
+
+playGame()
