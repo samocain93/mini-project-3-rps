@@ -14,68 +14,86 @@
 
 // console.log(x)
 
+
+
+
+// function game() {
+//   for (let i = 0; i <= 5; i++){
+//     playRound();
+//   }
+// }
+
+
 var choices = ["rock", "paper", "scissors"];
+var winners = [];
+
 
 function playGame() {
+  for (let i = 0; i < 5; i++){
   playRound();
+  }
 }
+
 
 function playRound() {
-  let playerSelection = playerChoice();
-  let computerSelection = computerChoice();
+  var playerSelection = playerChoice();
+  var computerSelection = computerChoice();
+  var winner = pickWinner(playerSelection, computerSelection)
+  winners.push(winner);
+
 }
-
-
 
 function playerChoice() {
   //   will get the input from the player
   var input = prompt("Select: rock, paper, or scissors");
-  while(input == null) {
-    input = prompt("Please type rock, paper or scissors")
+  while (input == null) {
+    input = prompt("Please type rock, paper or scissors");
   }
-   input = input.toLowerCase();
+  input = input.toLowerCase();
 
   let check = validateInput(input);
-   while (check == false) {
+  while (check == false) {
     input = prompt("Please type: rock, paper or scissors");
-    input = input.toLowerCase() 
+    input = input.toLowerCase();
     check = validateInput(input);
-
-  };
+  }
   while (input == null) {
     input = prompt("Please type: rock, paper or scissors");
-
   }
   input = input.toLowerCase();
   check = validateInput(input);
+  return input;
 }
-
 
 
 function computerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-
-
 function validateInput(choice) {
-    if(choices.includes(choice)) {
-        return true;
-    } else {
-        return false;
-    }
+  if (choices.includes(choice)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function pickWinner(choiceP, choiceC) {
-    if(choiceP === choiceC) {
-        return "Tie"
-    }
+  if (choiceP === choiceC) {
+    return "Tie";
+  } else if (
+    (choiceP === "rock" && choiceC === "scissors") ||
+    (choiceP === "paper" && choiceC === "rock") ||
+    (choiceP === "scissors" && choiceC === "paper")
+  ) {
+    return "Player Wins";
+  } else{
+    return "Computer Wins";
+  }
 }
 
+function showWins(){
+  console.log(winners)
+}
 
-
-
-
-
-
-playGame()
+playGame();
