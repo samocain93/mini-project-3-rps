@@ -32,6 +32,7 @@ function playGame() {
   for (let i = 0; i < 5; i++){
   playRound();
   }
+  showWins();
 }
 
 
@@ -93,7 +94,10 @@ function pickWinner(choiceP, choiceC) {
 }
 
 function showWins(){
-  console.log(winners)
+  let playerWins = winners.filter((item) => item == "Player";
+  let computerWins = winners.filter((item) => item == "Computer");
+  let ties = winners.filter((item) => item == "Tie");
+
 }
 
 playGame();
